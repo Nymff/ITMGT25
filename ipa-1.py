@@ -137,7 +137,8 @@ def body_mass_index(weight, height):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    list1 = list((height[:height.index("'")], height[height.index("'")+1:-1]))
-    bmi = (weight*0.45359237)/(((int(list1[0])*0.304)+(int(list1[1])*0.0254))**2) 
+    list1 = list((height))
+    bmi = (weight/2.205)/(((list1[0]/3.281)+(list1[1]/39.37))**2) 
     return bmi
+
 
