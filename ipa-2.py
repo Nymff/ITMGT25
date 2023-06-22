@@ -151,16 +151,21 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ '
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     cipher = ""
     key1 = ""
     place = 0
     for letter in message:
+        if letter != " ":
             key1 = key1 + key[place % len(key)]
             shifted1 = (alphabet.index(message[place]) + alphabet.index(key1[place])) % 26
             shifted2 = alphabet[shifted1]
             cipher = cipher + shifted2
-            place = place + 1      
+            place = place + 1   
+        else:
+            cipher = cipher + " "
+            key1 = key1 + key[place % len(key)]
+            place += 1
     return cipher
 
 def scytale_cipher(message, shift):
@@ -222,8 +227,8 @@ def scytale_cipher(message, shift):
     else:
         remaining = shift - (len(message) % shift)
         new_message = message + '_' * remaining
-        for i in range(len(message)):
-            final_message = final_message + new_message[(i // shift) + (len(message) // shift) * (i % shift)]
+        for i in range(len(new_message)):
+            final_message = final_message + new_message[(i // shift) + (len(new_message) // shift) * (i % shift)]
     return final_message
 
 def scytale_decipher(message, shift):
